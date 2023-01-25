@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { ComposableMap, Geographies, Geography, Marker, Annotation, ZoomableGroup } from "react-simple-maps"
 import { Tooltip } from 'react-tooltip'
 import { Tooltip as ReactTooltip } from 'react-tooltip'
+import { useNavigate } from "react-router-dom"
 import '../App.css'
 import 'react-tooltip/dist/react-tooltip.css'
 
@@ -34,18 +35,26 @@ const getUrl = async () => {
 }
 // getUrl()
 
+
+
 const MapChart = () => {
     // const [content, setContent] = useState("22")
     const [content, setContent] = useState("Russia")
-    useEffect(() => {
-        console.log(content)
-    }, [content])
 
+    // useEffect(() => {
+    //     console.log(content)
+    // }, [content])
+
+    const detailPage = (geo) => {
+        console.log(geo.target.id)
+        navigate(`/country/${geo.target.id}`)
+    }
+
+    const navigate = useNavigate()
 
     return (
         <>
             <div><h3>Let's bulid some cool maps!</h3>
-
                 <p id={content} data-tooltip-content="hello world">
                     Tooltip1
                 </p>
@@ -65,7 +74,7 @@ const MapChart = () => {
             {/* <Tooltip message="검색" direction="right">{content ? content : "나라에 마우스를 가져다 대세요."} */}
             {/* <ReactTooltip anchorId={content} /> */}
 
-            {console.log(geoUrl, 'geoUrl')}
+            {/* {console.log(geoUrl, 'geoUrl')} */}
             {/* {console.log(<ReactTooltip anchorId={content} />)} */}
             <ComposableMap data-tip="wwwwewewe" data-for="tooltip">22
                 <ZoomableGroup zoom={1}>
@@ -77,20 +86,22 @@ const MapChart = () => {
 
                                 // console.log('국가id', geo.id, '국가코드', geo.properties["Alpha-2"]),
                                 <Geography key={geo.rsmKey} geography={geo} id={content}
+                                    // onClick={detailPage(geo)}
+                                    onClick={(geo) => { detailPage(geo) }}
                                     onMouseOver={(e) => {
                                         // console.log(geo, 'geo?')
                                         const NAME = geo.properties.name;
                                         // const NAME = geo.properties["Alpha-2"];
                                         // console.log(geo.properties.name)
-                                        console.log(content)
-                                        console.log(e.target, "Russia")
-                                        console.log(e.target.id, "Russia")
+                                        // console.log(content)
+                                        // console.log(e.target, "Russia")
+                                        // console.log(e.target.id, "Russia")
                                         // console.log(content, '2')
                                         // console.log(NAME, '3')
                                         setContent(`${NAME}`)
                                     }}
                                     onMouseLeave={() => {
-                                        // setContent("");
+                                        setContent("");
                                     }}
 
                                     style={{
@@ -105,7 +116,7 @@ const MapChart = () => {
                         }
                     </Geographies>
                     {/* </ReactTooltip> */}
-                    {console.log(<Geography />, 'dddddddddddddddddddddddd')}
+                    {/* {console.log(<Geography />, 'dddddddddddddddddddddddd')} */}
                     {marker.map(({ name, coordinates, markerOffset }) => (
                         <Marker id={name} key={name} coordinates={coordinates}>
                             <circle r={10} fill="#F00" stroke="#fff" strokeWidth={2} />
