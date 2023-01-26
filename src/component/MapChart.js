@@ -46,8 +46,8 @@ const MapChart = () => {
     // }, [content])
 
     const detailPage = (geo) => {
-        console.log(geo.target.id)
-        navigate(`/country/${geo.target.id}`)
+        console.log(geo)
+        navigate(`/country/${geo.id}`)
     }
 
     const navigate = useNavigate()
@@ -57,6 +57,7 @@ const MapChart = () => {
             <div><h3>Let's bulid some cool maps!</h3>
                 <p id={content} data-tooltip-content="hello world">
                     Tooltip1
+                    {content}
                 </p>
                 <p id="{content}" data-tooltip-content="hello world">
                     Tooltip2
@@ -87,8 +88,8 @@ const MapChart = () => {
                                 // console.log('국가id', geo.id, '국가코드', geo.properties["Alpha-2"]),
                                 <Geography key={geo.rsmKey} geography={geo} id={content}
                                     // onClick={detailPage(geo)}
-                                    onClick={(geo) => { detailPage(geo) }}
-                                    onMouseOver={(e) => {
+                                    onClick={() => { detailPage(geo) }}
+                                    onMouseEnter={(e) => {
                                         // console.log(geo, 'geo?')
                                         const NAME = geo.properties.name;
                                         // const NAME = geo.properties["Alpha-2"];
