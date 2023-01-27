@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { ComposableMap, Geographies, Geography, Marker, Annotation, ZoomableGroup } from "react-simple-maps"
-import { Tooltip } from 'react-tooltip'
+// import { Tooltip } from 'react-tooltip'
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import { useNavigate } from "react-router-dom"
 import '../App.css'
 import 'react-tooltip/dist/react-tooltip.css'
+import { motion } from "framer-motion"
+import { OverlayTrigger } from "react-bootstrap"
+import Tooltip from 'react-bootstrap/Tooltip';
 
 const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json"
 
@@ -53,8 +56,30 @@ const MapChart = () => {
     const navigate = useNavigate()
 
     return (
-        <>
-            <div><h3>Let's bulid some cool maps!</h3>
+        <motion.svg
+            initial={{
+                x: "-500%",
+                y: "-50%",
+                scale: 1,
+                transition: { duration: 0.5 }
+            }}
+            animate={{
+                x: "-50%",
+                y: "-50%",
+                scale: 4,
+                rotate: 0,
+                transition: { duration: 0.5 }
+            }}
+            exit={{
+                x: "-500%",
+                y: "-50%",
+                scale: 1,
+                zIndex: '-5',
+                transition: { duration: 0.5 }
+            }}
+            className="map"
+        >
+            {/* <div><h3>Let's bulid some cool maps!</h3>
                 <p id={content} data-tooltip-content="hello world">
                     Tooltip1
                     {content}
@@ -62,7 +87,7 @@ const MapChart = () => {
                 <p id="{content}" data-tooltip-content="hello world">
                     Tooltip2
                 </p>
-            </div>
+            </div> */}
             {/* <ReactTooltip
                 id="tooltip"
                 effect="solid"
@@ -77,48 +102,48 @@ const MapChart = () => {
 
             {/* {console.log(geoUrl, 'geoUrl')} */}
             {/* {console.log(<ReactTooltip anchorId={content} />)} */}
-            <ComposableMap data-tip="wwwwewewe" data-for="tooltip">22
+            <ComposableMap data-tip="wwwwewewe" data-for="tooltip" className="navigate-push">
                 <ZoomableGroup zoom={1}>
-                    {""}
+                    {/* {""} */}
                     <Geographies geography={geoUrl}>
 
                         {({ geographies }) =>
                             geographies.map((geo) => (
-
                                 // console.log('국가id', geo.id, '국가코드', geo.properties["Alpha-2"]),
-                                <Geography key={geo.rsmKey} geography={geo} id={content}
-                                    // onClick={detailPage(geo)}
-                                    onClick={() => { detailPage(geo) }}
-                                    onMouseEnter={(e) => {
-                                        // console.log(geo, 'geo?')
-                                        const NAME = geo.properties.name;
-                                        // const NAME = geo.properties["Alpha-2"];
-                                        // console.log(geo.properties.name)
-                                        // console.log(content)
-                                        // console.log(e.target, "Russia")
-                                        // console.log(e.target.id, "Russia")
-                                        // console.log(content, '2')
-                                        // console.log(NAME, '3')
-                                        setContent(`${NAME}`)
-                                    }}
-                                    onMouseLeave={() => {
-                                        setContent("");
-                                    }}
-
-                                    style={{
-                                        hover: {
-                                            fill: "#F53",
-                                            outline: 'none'
-                                        }
-                                    }}
-                                />
+                                <OverlayTrigger
+                                    //  key={geo}
+                                    // geo={geo}
+                                    placement="top"
+                                    overlay={
+                                        <Tooltip id={`tooltip-${geo.properties.name}`} className="tooltip">
+                                            Tooltip on <strong>{geo.properties.name}</strong>
+                                        </Tooltip>
+                                    }>
+                                    <Geography key={geo.rsmKey} geography={geo} id={content}
+                                        onClick={() => { detailPage(geo) }}
+                                        onMouseEnter={(e) => {
+                                            // console.log(geo, 'geo?')
+                                            const NAME = geo.properties.name;
+                                            setContent(`${NAME}`)
+                                        }}
+                                        onMouseLeave={() => {
+                                            setContent("");
+                                        }}
+                                        style={{
+                                            hover: {
+                                                // fill: "#F53",
+                                                fill: '#6cc4aa',
+                                                outline: 'none'
+                                            }
+                                        }}
+                                    /></OverlayTrigger>
                             )
                             )
                         }
                     </Geographies>
                     {/* </ReactTooltip> */}
                     {/* {console.log(<Geography />, 'dddddddddddddddddddddddd')} */}
-                    {marker.map(({ name, coordinates, markerOffset }) => (
+                    {/* {marker.map(({ name, coordinates, markerOffset }) => (
                         <Marker id={name} key={name} coordinates={coordinates}>
                             <circle r={10} fill="#F00" stroke="#fff" strokeWidth={2} />
                             <text
@@ -128,9 +153,9 @@ const MapChart = () => {
                             >
                                 {name}
                             </text>
-                        </Marker>
-                    ))}
-                    <Annotation subject={[2.3522, 48.8566]}
+                        </Marker> */}
+                    {/* ))} */}
+                    {/* <Annotation subject={[2.3522, 48.8566]}
                         dx={-90}
                         dy={-30}
                         connectorProps={{
@@ -145,10 +170,10 @@ const MapChart = () => {
                             fill="#F53">
                             {"Paris"}
                         </text>
-                    </Annotation>
+                    </Annotation> */}
                 </ZoomableGroup>
             </ComposableMap>
-        </>
+        </motion.svg>
     )
 }
 

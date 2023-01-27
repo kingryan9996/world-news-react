@@ -2,6 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { MyC } from '../MyContext'
 import countryData from '../Countrydata'
+import { motion } from "framer-motion"
+import '../App.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 
 const Country = () => {
     // console.log(countryData, '나라갯수')
@@ -49,13 +53,13 @@ const Country = () => {
         // let url = ` https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${API_key}&artist=Cher&album=Believe&format=json` //검색어로 음원검색
 
         // let url = `https://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=${id}&api_key=${API_key}&format=json`
-        console.log(countryName, '499999')
+        // console.log(countryName, '499999')
         let url = `https://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=${countryName}&api_key=${API_key}&format=json`
         let response = await fetch(url)
         let data = await response.json()
         // console.log(data, '데잉ㅇㅇㅇㅇㅇ')
         setMusic(data)
-        await console.log(data, 'music데이터')
+        // await console.log(data, 'music데이터')
         // console.log(music?.tracks)
         // console.log(music?.tracks.track)
     }
@@ -69,33 +73,54 @@ const Country = () => {
 
 
     return (
-        <div>
-            <div className="weather">
-                <div>{weather?.name}, '나라이름'</div>
-                <div>{weather?.main.temp}, '현재온도'</div>
-                <div>{weather?.main.temp_min}, '최저기온'</div>
-                <div>{weather?.main.temp_max}, '최대기온'</div>
-                <div>{weather?.weather[0].main}, '구름 등등'</div>
+        <motion.div
+            initial={{
+                x: "200%",
+                y: "-50%",
+                scale: 0.3,
+                rotate: 0,
+                transition: { duration: 0.5 }
+            }}
+            animate={{
+                x: "-50%",
+                y: "-50%",
+                scale: 1,
+                rotate: 0,
+                transition: { duration: 0.5 }
+            }}
+            exit={{
+                x: "200%",
+                y: "-50%",
+                scale: 0.3,
+                rotate: 0,
+                transition: { duration: 0.5 }
+            }}
+            className="weather">
+            <h2>{weather?.name}</h2>
+            <div className='weather-temp'>
+                <img src='wwfw' />
+                <div>현재온도 : {weather?.main.temp}</div>
+            </div>
+            <div className='weather-cloudwind'>
                 <div>{weather?.weather[0].description}, '구름 등등 자세히'</div>
                 <div>{weather?.wind.speed}, '풍속'</div>
+                <FontAwesomeIcon icon={faLocationArrow} size="2x" color="#000" transform={{ rotate: weather?.wind.deg }} />
                 <div>{weather?.wind.deg}, '바람방향'</div>
             </div>
-            <div className="music">
+            {/* <div className="music">
                 {music?.tracks?.track?.map((obj, idx) => {
-                    if (idx < 5)
+                    if (idx < 1)
                         return <div>
                             <div>노래제목 : {obj.name}</div>
                             <div>노래링크 : {obj.url}</div>
                             <div>아티스트명 : {obj.artist.name}</div>
                             <div>아티스트링크 : {obj.artist.url}</div>
                             <div><img src={obj.image[0]['#text']} /></div>
-                            <div><img src={obj.image[1]['#text']} /></div>
-                            <div><img src={obj.image[2]['#text']} /></div>
-                            <div><img src={obj.image[3]['#text']} /></div>
+                            <div><img src={obj.image[1]['#text']} /></div>                           
                         </div>
                 })}
-            </div>
-        </div>
+            </div> */}
+        </motion.div>
     )
 }
 

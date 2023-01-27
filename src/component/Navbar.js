@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { MyC } from '../MyContext'
 import { useNavigate } from 'react-router-dom'
+import '../App.css'
 
 const Navbar = () => {
     let EncodingApiKey = 'GPDRDcVxzA9rtdXCIcE7mYwIUXWJxp0vBrtDglSqA9KJLhVW1Hue7q30VxsqVPcCEG%2BAVQr6GX%2F6bpGj5rFIRw%3D%3D'
@@ -34,11 +35,15 @@ const Navbar = () => {
     const gotoLogin = () => {
         navigate('/login')
     }
+    const gotoHome = () => {
+        navigate('/')
+    }
 
     const { } = useContext(MyC)
 
     return (
-        <div><h2>Navbar</h2>
+        <div className='Navbar'><h2>Navbar</h2>
+            <h3 onClick={gotoHome}>첫화면</h3>
             <h3 onClick={gotoLogin}>로그인</h3></div>
     )
 }
