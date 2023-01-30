@@ -6,6 +6,8 @@ import { motion } from "framer-motion"
 import '../App.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
+import { faWind } from "@fortawesome/free-solid-svg-icons";
+
 
 const Country = () => {
     // console.log(countryData, '나라갯수')
@@ -64,15 +66,13 @@ const Country = () => {
         // console.log(music?.tracks.track)
     }
 
-
-
     useEffect(() => {
         getWeatherData()
         getMusicData()
     }, [])
 
-
     return (
+
         <motion.div
             initial={{
                 x: "200%",
@@ -97,17 +97,21 @@ const Country = () => {
             }}
             className="weather">
             <h2>{weather?.name}</h2>
-            <div className='weather-temp'>
-                <img src='wwfw' />
-                <div>현재온도 : {weather?.main.temp}</div>
+            <div className="weather-data">
+                <div className='weather-temp'>
+                    <img src='wwfw' />
+                    <div>현재온도 : {weather?.main.temp}</div>
+                </div>
+                <div className='weather-temp'>
+                    <img src='wwfw' />
+                    <div>{weather?.weather[0].description}, '구름 등등 자세히'</div>
+                </div>
+                <div className='weather-temp'>
+                    <div><FontAwesomeIcon className='wind-icon' icon={faWind} />
+                        '풍속', {weather?.wind.speed}<FontAwesomeIcon icon={faLocationArrow} size="2x" color="#000" transform={{ rotate: weather?.wind.deg }} /></div>
+                </div>
             </div>
-            <div className='weather-cloudwind'>
-                <div>{weather?.weather[0].description}, '구름 등등 자세히'</div>
-                <div>{weather?.wind.speed}, '풍속'</div>
-                <FontAwesomeIcon icon={faLocationArrow} size="2x" color="#000" transform={{ rotate: weather?.wind.deg }} />
-                <div>{weather?.wind.deg}, '바람방향'</div>
-            </div>
-            {/* <div className="music">
+            <div className="music">
                 {music?.tracks?.track?.map((obj, idx) => {
                     if (idx < 1)
                         return <div>
@@ -116,10 +120,9 @@ const Country = () => {
                             <div>아티스트명 : {obj.artist.name}</div>
                             <div>아티스트링크 : {obj.artist.url}</div>
                             <div><img src={obj.image[0]['#text']} /></div>
-                            <div><img src={obj.image[1]['#text']} /></div>                           
                         </div>
                 })}
-            </div> */}
+            </div>
         </motion.div>
     )
 }
