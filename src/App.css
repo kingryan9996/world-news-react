@@ -7,7 +7,7 @@
 .App {
     width: 100%;
     height: 100vh;
-    background-color: rgba(129, 198, 234, 0.8);
+    background-color: rgba(205, 221, 230, 0.8);
     position: relative;
 }
 .Navbar{
@@ -16,20 +16,48 @@
   left: 0;
   display: flex;
 }
+.abcd{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+.WorldMap {
+  /* width: 50%; */
+  border: 1px solid black;
+  background-color: rgba(129, 198, 234, 0.8);
+  /* width: 70%; */
+  /* position: absolute; */
+}
+
+.WorldMap path {
+  /* fill:rgba(38, 39, 39, 0.86); */
+  fill:rgba(173,236,187,0.86);
+  /* fill:rgba(198, 222, 235, 0.8); */
+  stroke: #fff;
+  /* stroke: rgba(129, 198, 234, 0.8); */
+  stroke-width: 0.5px;
+}
 
 svg {
-    display: inline-block;
-    vertical-align: middle;
-  }
-  
-  .map path {
-    /* fill:rgba(38, 39, 39, 0.86); */
-    fill:rgba(173,236,187,0.86);
-    /* fill:rgba(198, 222, 235, 0.8); */
-    stroke: #fff;
-    /* stroke: rgba(129, 198, 234, 0.8); */
-    stroke-width: 0.5px;
-  }
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tooltip{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.col{
+  border: 1px solid coral;
+}
+
 
   /* .navigate-push {
     background-color: rgba(129, 198, 234, 0.8);
@@ -42,11 +70,7 @@ svg {
   } */
 
   .weather {
-    width: 600px;
     border: 1px solid black;
-    position: absolute;
-    left: 50%;
-    top: 50%;
   }
   .weather-data {
     display: flex;
@@ -54,7 +78,7 @@ svg {
   
   .weather-temp{
     display: flex;
-    width: 150px;
+    /* width: 250px; */
     /* height: 50px; */
     border: 1px solid black;
   }
@@ -71,13 +95,11 @@ svg {
   animation-iteration-count: infinite;
 }
 @keyframes winding {  
-  0%{
+  0%,20%{
     transform: translateX(-15%);
     opacity: 0;
   }
-  10%{
-  }
-  35%{
+  50%{
     opacity: 1;
   }
   80%,100%{
@@ -86,21 +108,7 @@ svg {
   }
   
 }
-  .map {
-    /* width: 600px; */
-    border: 1px solid black;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-  }
-
-  .tooltip{
-
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
+  
   /* .rsm-geography {
     animation-name: path-line;
     animation-duration: 10s;
@@ -118,3 +126,63 @@ stroke-dasharray: 0%;
 stroke-dasharray: 100%;
     }
   } */
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  .pagination ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .pagination ul li {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #e2e2e2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+  }
+
+  .pagination ul li:first-child{
+    border-radius: 5px 0 0 5px;
+  }
+
+  .pagination ul li:last-child{
+    border-radius: 0 5px 5px 0;
+  }
+  
+  .pagination ul li a {
+    text-decoration: none;
+    color: #337ab7;
+    font-size: 1rem;
+  }
+  
+  .pagination ul li.active a {
+    color: white;
+  }
+
+  .pagination ul li.active {
+    background-color: #337ab7;
+  }
+  
+  .pagination ul li a:hover,
+  .pagination ul li a.active {
+    color: blue;
+  }
+  .pagination ul li:hover,
+  .rc-pagination-item-active{
+    color: red;
+    background-color: black;
+  }
+  
+  .page-selection {
+    width: 48px;
+    height: 30px;
+    color: #337ab7;
+  }
