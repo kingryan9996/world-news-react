@@ -1,3 +1,4 @@
+import axios from "axios";
 import api from "../api";
 
 const NEWS_API_KEY = process.env.REACT_APP_NEWS_API_KEY;
@@ -10,14 +11,14 @@ function getCountryPage(countryName, today) {
       dispatch({ type: "GET_DATA_REQUEST" });
       const weatherApi = api.get(
         // `https://api.openweathermap.org/data/2.5/weather?q=${countryName}&appid=${WEATHER_API_KEY}&units=metric`
-        `api.openweathermap.org/data/2.5/weather?q=${countryName}&appid=${WEATHER_API_KEY}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${countryName}&appid=${WEATHER_API_KEY}&units=metric`
       );
       const musicApi = api.get(
-        `ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=${countryName}&api_key=${MUSIC_API_KEY}&format=json`
+        `https://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=${countryName}&api_key=${MUSIC_API_KEY}&format=json`
       );
       const newsApi = api.get(
         // `newsapi.org/v2/everything?q=${countryName}&from=2023-02-07&sortBy=popularity&apiKey=${NEWS_API_KEY}`
-        `newsapi.org/v2/everything?q=${countryName}&from
+        `https://newsapi.org/v2/everything?q=${countryName}&from
       =${today}&pageSize=20&apiKey=${NEWS_API_KEY}`
       );
       // const newsApi = api.get(        

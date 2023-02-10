@@ -10,6 +10,7 @@ const Weather = ({ weather, loading }) => {
     // console.log('웨더페이지10번째줄', loading)
     // console.log('웨더페이지 날씨데이터 ', weather)
 
+    //console.log(weather.main)
     if (!weather) {
         return <Spinner animation="border" variant="primary" />
     }
@@ -45,7 +46,7 @@ const Weather = ({ weather, loading }) => {
                 <div className='weather-temp'>0
                     <div><FontAwesomeIcon className='wind-icon' icon={faWind} />
                         '풍속', {weather.wind.speed}<FontAwesomeIcon icon={faLocationArrow} size="2x" color="#000" transform={{ rotate: weather && (weather.wind.deg - 45) }} /></div>
-                    <div>'풍속', {weather.wind.speed}<FontAwesomeIcon icon={faLocationArrow} size="2x" color="#000" transform={{ rotate: -45 }} /></div>
+                    {/* <div>'풍속', {weather.wind.speed}<FontAwesomeIcon icon={faLocationArrow} size="2x" color="#000" transform={{ rotate: -45 }} /></div> */}
                 </div>
             </div>
         </motion.div>

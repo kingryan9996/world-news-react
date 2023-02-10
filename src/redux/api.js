@@ -2,7 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
     //기본베이스 url설정
-    baseURL: "https://",
+    // baseURL: "https://",
     headers: { "Content-type": "application/json" },
 });
 
@@ -10,7 +10,7 @@ const api = axios.create({
 api.interceptors.request.use(
     function (config) {
         // console.log(config, "request config?");
-        // 요청이 전달되기 전에 작업 수행
+        // 요청이 전달되기 전에 작업 수행..
         return config;
     },
     function (error) {
