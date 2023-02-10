@@ -7,12 +7,10 @@ import { faSnowflake, faUmbrella, faCloudSun, faWind } from "@fortawesome/free-s
 import Spinner from 'react-bootstrap/Spinner';
 
 const Weather = ({ weather, loading }) => {
-    console.log('웨더페이지10번째줄', loading)
-    console.log('웨더페이지 날씨데이터 ', weather)
+    // console.log('웨더페이지10번째줄', loading)
+    // console.log('웨더페이지 날씨데이터 ', weather)
 
-
-    if (weather) {
-        { console.log(loading, 'loading상태') }
+    if (!weather) {
         return <Spinner animation="border" variant="primary" />
     }
     return (

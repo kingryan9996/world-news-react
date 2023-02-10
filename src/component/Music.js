@@ -3,11 +3,10 @@ import { faUsersBetweenLines } from '@fortawesome/free-solid-svg-icons'
 import Spinner from 'react-bootstrap/Spinner';
 
 const Music = ({ music, loading }) => {
-    console.log('웨더페이지6번째줄', loading)
-    console.log('음악페이지 music데이터 ', music)
+    // console.log('웨더페이지6번째줄', loading)
+    // console.log('음악페이지 music데이터 ', music)
 
-    if (music) {
-        { console.log(loading, 'loading상태') }
+    if (!music) {
         return <Spinner animation="border" variant="primary" />
     }
     return (

@@ -17,7 +17,7 @@ const Country = () => {
     const { } = useContext(MyC)
     const dispatch = useDispatch()
     const { loading, weather, music, news } = useSelector(state => state.country)
-    console.log('컨츄리페이지 20번째줄', loading)
+    // console.log('컨츄리페이지 20번째줄', loading)
 
     let { id } = useParams()
     const deleteData = countryData.filter((obj) => obj['alpha-3'] == id)

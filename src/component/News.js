@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import NewsItem from './NewsItem'
 import Pagination from './Pagination'
 import Spinner from 'react-bootstrap/Spinner';
+import { Container, Row, Col } from 'react-bootstrap'
 
 const News = ({ news, loading }) => {
-    console.log('뉴스페이지7번째줄', loading)
-    console.log('News컴포넌트의 데이터', news.articles)
+    // console.log('뉴스페이지7번째줄', loading)
+    // console.log('News컴포넌트의 데이터', news.articles)
     // console.log(news)
     // console.log('작성자', news[0].author)
     // console.log('기사본문', news[0].content)
@@ -32,12 +33,23 @@ const News = ({ news, loading }) => {
     //         .then((data) =>  setPosts(data) );
     // }, []);
 
-    if (news) {
-        { console.log(loading, 'loading상태') }
+    // console.log(news)
+    if (!news) {
         return <Spinner animation="border" variant="primary" />
     }
+
     return (
         <section>
+            {/* <div>
+                {news.map((item) =>
+                    <div>
+                        <h2>{item.source}</h2>
+                        <p>{item.pub_date}</p>
+                    </div>
+
+                )}
+            </div> */}
+            {/* {console.log('성공성송공서오성ㅅ오')} */}
             <header style={{ display: 'flex' }}>
                 <h1>실시간 뉴스</h1>
 
@@ -54,11 +66,20 @@ const News = ({ news, loading }) => {
                     </select>
                 </label>
             </header>
-            {news.articles.slice(offset, offset + limit).map((item, idx) =>
-                // { console.log(item, idx) }
-                <NewsItem item={item} idx={idx} />
+            <div style={{ display: 'flex', height: 300, border: '1px solid red' }}>
+                <Container>
+                    <Row>
 
-            )}
+                        {news.articles.slice(offset, offset + limit).map((item, idx) =>
+                            // { console.log(item, idx) }
+                            <Col style={{ width: '20%' }}>
+                                <NewsItem item={item} idx={idx} />
+
+                            </Col>
+                        )}
+                    </Row>
+                </Container>
+            </div>
             <Pagination
                 total={news.articles.length}
                 limit={limit}

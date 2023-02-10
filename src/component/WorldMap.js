@@ -18,7 +18,7 @@ const WorldMap = () => {
     return (
         <motion.svg
             initial={{
-                scale: 7,
+                scale: 3.5,
                 opacity: 0,
                 transition: { duration: 0.5 }
             }}

@@ -9,9 +9,10 @@ function countryReducer(state = initialState, action) {
     let { type, payload } = action;
     switch (type) {
         case "GET_DATA_REQUEST":
-            console.log('자 데이터 추출 ㄱ')
+            // console.log('자 데이터 추출 ㄱ')
             return { ...state, loading: true };
         case "GET_COUNTRY_DATA_SUCCESS":
+            // console.log('성공이잖아')
             return {
                 ...state,
                 weather: payload.weather,
