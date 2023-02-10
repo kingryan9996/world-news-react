@@ -37,7 +37,6 @@ const News = ({ news, loading }) => {
     if (!news) {
         return <Spinner animation="border" variant="primary" />
     }
-
     return (
         <section>
             {/* <div>

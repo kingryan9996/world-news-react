@@ -59,9 +59,9 @@ const Country = () => {
                         <Music music={music} loading={loading} />
                     </Col>
                 </Row>
-                <Row>
+                {/* <Row>
                     <News news={news} loading={loading} />
-                </Row>
+                </Row> */}
             </Container>
         </div>
     )

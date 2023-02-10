@@ -35,7 +35,7 @@ const Weather = ({ weather, loading }) => {
             <div className="weather-data">
                 <div className='weather-temp'>
                     <img src='wwfw' />
-                    <div>현재온도 : {weather.main.temp}</div>
+                    <div>현재온도 : {weather.main?.temp}</div>
                 </div>
                 <div className='weather-temp'>
                     <img src='wwfw' />
