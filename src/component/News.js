@@ -80,12 +80,12 @@ const News = ({ news, loading }) => {
                     </Row>
                 </Container>
             </div>
-            <NewsPagination
+            {news?.articles && <NewsPagination
                 total={news.articles.length}
                 limit={limit}
                 page={page}
                 setPage={setPage}
-            />
+            />}
         </section>
     )
 }
