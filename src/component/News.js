@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import NewsItem from './NewsItem'
-import Pagination from './Pagination'
+import NewsPagination from './NewsPagination'
 import Spinner from 'react-bootstrap/Spinner';
 import { Container, Row, Col } from 'react-bootstrap'
+import '../App.css'
 
 const News = ({ news, loading }) => {
     // console.log('뉴스페이지7번째줄', loading)
@@ -71,7 +72,7 @@ const News = ({ news, loading }) => {
 
                         {news.articles.slice(offset, offset + limit).map((item, idx) =>
                             // { console.log(item, idx) }
-                            <Col style={{ width: '20%' }}>
+                            <Col style={{ width: '20%', height: '250px', overflow: 'scroll' }}>
                                 <NewsItem item={item} idx={idx} />
 
                             </Col>
@@ -79,7 +80,7 @@ const News = ({ news, loading }) => {
                     </Row>
                 </Container>
             </div>
-            <Pagination
+            <NewsPagination
                 total={news.articles.length}
                 limit={limit}
                 page={page}

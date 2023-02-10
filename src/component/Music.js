@@ -4,7 +4,7 @@ import Spinner from 'react-bootstrap/Spinner';
 
 const Music = ({ music, loading }) => {
     // console.log('웨더페이지6번째줄', loading)
-    console.log('음악페이지 music데이터 ', music.tracks.track)
+
     if (music == null) { console.log('로딩중') }
 
     if (!music) {

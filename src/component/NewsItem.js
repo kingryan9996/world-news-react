@@ -8,11 +8,10 @@ const NewsItem = ({ item, idx }) => {
         <Container>
             <Row>
                 <Col sm={4} style={{ border: "1px solid black", padding: '1%' }}>
-                    <img style={{ width: '100%' }} src={item.urlToImage} />
+                    <img style={{ width: '150px' }} src={item.urlToImage} />
                 </Col>
                 <Col>
                     <article key={idx}>
-
                         <h3>
                             {item.author}. {item.title}
                         </h3>
