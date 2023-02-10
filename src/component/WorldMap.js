@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { motion } from "framer-motion"
 import { ComposableMap, Geographies, Geography, Marker, Annotation, ZoomableGroup } from "react-simple-maps"
 import { Tooltip, OverlayTrigger } from "react-bootstrap"
 import 'react-tooltip/dist/react-tooltip.css'
 
-const WorldMap = () => {
+const WorldMap = ({ setShow }) => {
     const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json"
     const navigate = useNavigate()
     const [content, setContent] = useState("")
@@ -13,12 +13,13 @@ const WorldMap = () => {
     const detailPage = (geo) => {
         // console.log(geo)
         navigate(`/country/${geo.id}`)
+        setShow(false)
     }
 
     return (
         <motion.svg
             initial={{
-                scale: 3.5,
+                scale: 1.5,
                 opacity: 0,
                 transition: { duration: 0.5 }
             }}

@@ -9,24 +9,6 @@ const News = ({ news, loading }) => {
     // console.log('뉴스페이지7번째줄', loading)
     // console.log('News컴포넌트의 데이터', news.articles)
     console.log(news)
-    // console.log('작성자', news[0].author)
-    // console.log('기사본문', news[0].content)
-    // console.log('기사설명', news[0].description)
-    // console.log('작성일자', news[0].publishedAt)
-    // console.log('기사제목', news[0].title)
-    // console.log('출처 url', news[0].url)
-    // console.log('출처 url의 이미지', news[0].urlToImage)
-    // console.log('출처', news[0].source.name)
-
-
-    // const [posts, setPosts] = useState([]);
-    const [limit, setLimit] = useState(5);
-    const [page, setPage] = useState(1);
-
-    const offset = (page - 1) * limit;
-    // console.log('오프셋값', offset)
-    // console.log('페이지수', page)
-    // console.log('보여질 컨텐츠 갯수', limit)
 
     // useEffect(() => {
     //     fetch("https://jsonplaceholder.typicode.com/posts")
@@ -50,7 +32,7 @@ const News = ({ news, loading }) => {
                 )}
             </div> */}
             {/* {console.log('성공성송공서오성ㅅ오')} */}
-            <header style={{ display: 'flex' }}>
+            {/* <header style={{ display: 'flex' }}>
                 <h1>실시간 뉴스</h1>
 
                 <label>
@@ -65,14 +47,14 @@ const News = ({ news, loading }) => {
                         <option value="20">20</option>
                     </select>
                 </label>
-            </header>
-            <div style={{ display: 'flex', height: 300, border: '1px solid red' }}>
+            </header> */}
+            <div style={{ display: 'flex', height: 400 }}>
                 <Container>
                     <Row>
 
-                        {news?.slice(offset, offset + limit).map((item, idx) =>
+                        {news?.map((item, idx) =>
                             // { console.log(item, idx) }
-                            <Col style={{ width: '20%', height: '250px', overflow: 'scroll' }}>
+                            <Col className='newsItemWrap'>
                                 <NewsItem item={item} idx={idx} />
 
                             </Col>
@@ -80,13 +62,13 @@ const News = ({ news, loading }) => {
                     </Row>
                 </Container>
             </div>
-            {news && <NewsPagination
+            {/* {news && <NewsPagination
                 total={news.length}
                 limit={limit}
                 page={page}
                 setPage={setPage}
-            />}
-        </section>
+            />} */}
+        </section >
     )
 }
 

@@ -48,21 +48,17 @@ const Country = () => {
         return <Spinner animation="border" variant="primary" />
     }
     return (
-        <div className='2'>
-            {console.log(loading, '로딩상태')}
-            <Container>
-                <Row>
-                    <Col>
-                        <Weather weather={weather} loading={loading} />
-                    </Col>
-                    <Col>
-                        <Music music={music} loading={loading} />
-                    </Col>
-                </Row>
-                <Row>
-                    <News news={news} loading={loading} />
-                </Row>
-            </Container>
+        <div className='2'>{console.log(loading, '로딩상태')}
+            <Weather weather={weather} loading={loading} />
+            <div className='countryName' style={{ border: '1px solid black', height: 300 }}>
+                <p><h1 style={{ fontWeight: 'bold' }}>{countryName} News</h1>
+                    <h6>소제목 !@$!@$!@$!@$!@$!@$!@$!@@$</h6></p>
+
+            </div>
+            <div style={{ paddingLeft: '10%' }}>
+                <News news={news} loading={loading} />
+
+            </div>
         </div>
     )
 }

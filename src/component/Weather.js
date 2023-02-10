@@ -29,7 +29,8 @@ const Weather = ({ weather, loading }) => {
                 opacity: 0,
                 transition: { duration: 0.5 }
             }}
-            className="weather">
+            className="weather-wrap">
+            {console.log(weather)}
             <h2>{weather.name}</h2>
             <div className="weather-data">
                 <div className='weather-temp'>
