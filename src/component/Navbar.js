@@ -23,8 +23,8 @@ const Navbar = () => {
                     <WorldMap setShow={setShow} />
                 </Modal>
             </div>
-            <FontAwesomeIcon icon={faEarthAmericas} onClick={handleShow} />
-            <h6>Navbar</h6>
+            <FontAwesomeIcon style={{ fontSize: '1.5rem' }} icon={faEarthAmericas} onClick={handleShow} />
+            <span style={{ textAlign: 'center', fontSize: '0.7rem' }}>MORE</span>
         </div >
 
     )
