@@ -42,9 +42,9 @@ const Weather = ({ weather, loading }) => {
                     <FontAwesomeIcon icon={weather.snow ? faSnowflake : weather?.rain ? faUmbrella : faCloudSun} />
                     <span>{weather.snow || weather.rain ? ['1h'] : '2'}</span>
                 </div>
-                <div className='weather-temp'>0
+                <div className='weather-temp'>
                     <div><FontAwesomeIcon className='wind-icon' icon={faWind} />
-                        '풍속', {weather.wind?.speed}<FontAwesomeIcon icon={faLocationArrow} size="2x" color="#000" transform={{ rotate: weather && (Number(weather?.wind?.deg) - 45) }} /></div>
+                        '풍속', {weather.wind?.speed}<FontAwesomeIcon icon={faLocationArrow} size="2x" color="#000" transform={{ rotate: (Number(weather?.wind?.deg) - 45) }} /></div>
                     {/* <div>'풍속', {weather.wind.speed}<FontAwesomeIcon icon={faLocationArrow} size="2x" color="#000" transform={{ rotate: -45 }} /></div> */}
                 </div>
             </div>

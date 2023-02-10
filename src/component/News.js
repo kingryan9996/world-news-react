@@ -70,7 +70,7 @@ const News = ({ news, loading }) => {
                 <Container>
                     <Row>
 
-                        {news.articles.slice(offset, offset + limit).map((item, idx) =>
+                        {news?.articles?.slice(offset, offset + limit).map((item, idx) =>
                             // { console.log(item, idx) }
                             <Col style={{ width: '20%', height: '250px', overflow: 'scroll' }}>
                                 <NewsItem item={item} idx={idx} />
