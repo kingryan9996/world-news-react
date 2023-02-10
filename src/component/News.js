@@ -8,7 +8,7 @@ import '../App.css'
 const News = ({ news, loading }) => {
     // console.log('뉴스페이지7번째줄', loading)
     // console.log('News컴포넌트의 데이터', news.articles)
-    // console.log(news)
+    console.log(news)
     // console.log('작성자', news[0].author)
     // console.log('기사본문', news[0].content)
     // console.log('기사설명', news[0].description)
@@ -70,7 +70,7 @@ const News = ({ news, loading }) => {
                 <Container>
                     <Row>
 
-                        {news?.articles?.slice(offset, offset + limit).map((item, idx) =>
+                        {news?.slice(offset, offset + limit).map((item, idx) =>
                             // { console.log(item, idx) }
                             <Col style={{ width: '20%', height: '250px', overflow: 'scroll' }}>
                                 <NewsItem item={item} idx={idx} />
@@ -80,8 +80,8 @@ const News = ({ news, loading }) => {
                     </Row>
                 </Container>
             </div>
-            {news?.articles && <NewsPagination
-                total={news.articles.length}
+            {news && <NewsPagination
+                total={news.length}
                 limit={limit}
                 page={page}
                 setPage={setPage}
