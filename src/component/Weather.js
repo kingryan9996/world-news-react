@@ -10,7 +10,6 @@ const Weather = ({ weather, loading }) => {
     // console.log('웨더페이지10번째줄', loading)
     // console.log('웨더페이지 날씨데이터 ', weather)
 
-    console.log(weather.weather[0]?.description)
     if (!weather) {
         return <Spinner animation="border" variant="primary" />
     }
