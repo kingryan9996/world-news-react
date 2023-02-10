@@ -39,7 +39,7 @@ const Weather = ({ weather, loading }) => {
                 </div>
                 <div className='weather-temp'>
                     <img src='wwfw' />
-                    <div>{weather.weather[0]?.description}, '구름 등등 자세히'</div>
+                    {/* <div>{weather.weather[0]?.description}, '구름 등등 자세히'</div> */}
                     <FontAwesomeIcon icon={weather.snow ? faSnowflake : weather?.rain ? faUmbrella : faCloudSun} />
                     <span>{weather.snow || weather.rain ? ['1h'] : '2'}</span>
                 </div>
