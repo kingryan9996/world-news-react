@@ -1,16 +1,14 @@
-import MyContext from './MyContext';
-import Navbar from './component/Navbar';
-import { Routes, Route, useLocation } from 'react-router-dom'
-import List from './page/Country'
-import Home from './page/Home';
-import './App.css';
-import Country from './page/Country';
+import MyContext from "./MyContext";
+import Navbar from "./component/Navbar";
+import { Routes, Route, useLocation } from "react-router-dom";
+import List from "./page/Country";
+import Home from "./page/Home";
+import "./App.css";
+import Country from "./page/Country";
 import { AnimatePresence } from "framer-motion";
-import axios from 'axios';
-import Clock from 'react-live-clock';
+import axios from "axios";
 
 function App() {
-
   const location = useLocation();
 
   //==================================================================================/
@@ -46,13 +44,13 @@ function App() {
   //==================================================================================/
 
   return (
-    <div className='App'>
+    <div className="App">
       <MyContext>
         <AnimatePresence>
           <Navbar />
           <Routes location={location} key={location.pathname}>
-            <Route path='/' element={<Home />} />
-            <Route path='/country/:id' element={<Country />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/country/:id" element={<Country />} />
           </Routes>
         </AnimatePresence>
       </MyContext>

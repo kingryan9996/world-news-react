@@ -1,9 +1,12 @@
 import axios from "axios";
 import api from "../api";
 
-const NEWS_API_KEY = process.env.REACT_APP_NEWS_API_KEY;
-const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
-const MUSIC_API_KEY = process.env.REACT_APP_MUSIC_API_KEY;
+//const NEWS_API_KEY = process.env.REACT_APP_NEWS_API_KEY;
+// const NEWS_API_KEY = "f7b726ab5499492f98e9f0bf1052bec7"; 다른에이피아이쓰는중
+//const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+const WEATHER_API_KEY = "f07758540fae0603dbb22c2388dd2bdd";
+//const MUSIC_API_KEY = process.env.REACT_APP_MUSIC_API_KEY;
+const MUSIC_API_KEY = "294a5866c2d4b1b07f81c31ad7706aea";
 
 function getCountryPage(countryName, today) {
   return async (dispatch) => {
@@ -20,27 +23,24 @@ function getCountryPage(countryName, today) {
       // =${today}&pageSize=20&apiKey=${NEWS_API_KEY}`
       // );
 
-
-      // const newsApi = api.get(        
+      // const newsApi = api.get(
       //   `https://api.newscatcherapi.com/v2/search?q=Apple&from=2021/12/15&countries=CA&page_size=1`, {
       //   headers: { 'x-api-key': 'LfeIxjEnn6OGgdwPJU4fEbiBkeb3lSu-Ud1QXBQOtSo' }
       // }
       // );
       const newsApi = api.get(
-        'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=GP8s84Hs3ZKuZA7tcjg9hT7WfEVlzL8Y'
-
+        "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=GP8s84Hs3ZKuZA7tcjg9hT7WfEVlzL8Y"
       );
 
-      let [weather, music, news] =
-        await Promise.all([
-          weatherApi,
-          musicApi,
-          newsApi
-        ]);
+      let [weather, music, news] = await Promise.all([
+        weatherApi,
+        musicApi,
+        newsApi,
+      ]);
       // console.log('날씨', weather.data)
       // console.log('음악', music.data)
       // console.log('뉴스', news.data)
-      console.log('뉴욕타임즈뉴스', news.data.response.docs)
+      console.log("뉴욕타임즈뉴스", news.data.response.docs);
 
       // console.log(today, '컨츄리액션')
 
@@ -50,7 +50,7 @@ function getCountryPage(countryName, today) {
           weather: weather.data,
           music: music.data,
           // news: news.data,
-          news: news.data.response.docs
+          news: news.data.response.docs,
         },
         //axios 는 .data안에 데이터필드에 값이 있다.
       });
@@ -60,6 +60,35 @@ function getCountryPage(countryName, today) {
     }
   };
 }
+///////////////////////////
+// function getInfiniteNews(countryName) {
+//   return async (dispatch) => {
+//     try {
+//       dispatch({ type: "GET_DATA_REQUEST" });
+//       const newsApi = api.get(
+//         `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${countryName}&api-key=GP8s84Hs3ZKuZA7tcjg9hT7WfEVlzL8Y`
+//       );
+
+//       let [news] = await Promise.all([newsApi]);
+//       console.log("뉴욕타임즈뉴스", news.data.response.docs);
+
+//       // console.log(today, '컨츄리액션')
+
+//       dispatch({
+//         type: "GET_INFINITE_NEWS_DATA_SUCCESS",
+//         payload: {
+//           news: news.data.response.docs,
+//         },
+//         //axios 는 .data안에 데이터필드에 값이 있다.
+//       });
+//     } catch (error) {
+//       //에러 핸들링
+//       dispatch({ type: "GET_COUNTRY_DATA_FAILURE" });
+//     }
+//   };
+// }
+
+////////////////////////////
 
 function loadingChange() {
   return (dispatch) => {
