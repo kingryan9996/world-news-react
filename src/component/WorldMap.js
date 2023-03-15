@@ -12,7 +12,7 @@ import {
 import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import "react-tooltip/dist/react-tooltip.css";
 
-const WorldMap = ({ setShow }) => {
+const WorldMap = ({ show, setShow }) => {
   const geoUrl =
     "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
   const navigate = useNavigate();
@@ -28,11 +28,6 @@ const WorldMap = ({ setShow }) => {
 
   return (
     <motion.svg
-      style={
-        setShow
-          ? { width: "75vw", height: "85vh", transform: "translateX(5%)" }
-          : { width: "25vw", height: "30vh", transform: "translateX(5%)" }
-      }
       initial={{
         //scale: 1.5,
         opacity: 0,
@@ -47,9 +42,14 @@ const WorldMap = ({ setShow }) => {
         transition: { duration: 0.5 },
       }}
       className="WorldMap"
+      style={
+        setShow
+          ? { width: "75vw", height: "85vh", transform: "translateX(5%)" }
+          : { width: "25vw", height: "30vh", transform: "translateX(5%)" }
+      }
     >
       <ComposableMap
-        data-tip="wwwwewewe"
+        data-tip=""
         data-for="tooltip"
         className="navigate-push"
       >
@@ -101,7 +101,7 @@ const WorldMap = ({ setShow }) => {
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
-    </motion.svg>
+    </motion.svg >
   );
 };
 

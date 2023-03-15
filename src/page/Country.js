@@ -14,7 +14,7 @@ import Spinner from "react-bootstrap/Spinner";
 
 const Country = () => {
   // console.log(countryData, '나라갯수')
-  const {} = useContext(MyC);
+  const { } = useContext(MyC);
   const dispatch = useDispatch();
   const { loading, weather, music, news } = useSelector(
     (state) => state.country
@@ -61,10 +61,11 @@ const Country = () => {
       <Weather weather={weather} loading={loading} />
       <div
         className="countryName"
-        style={{ border: "1px solid black", height: 300 }}
+        style={{ height: 250, paddingTop: "100px" }}
       >
-        <h1 style={{ fontWeight: "bold" }}>{countryName} News</h1>
-        <h6>소제목 !@$!@$!@$!@$!@$!@$!@$!@@$</h6>
+        <h1 style={{ fontWeight: "bold", fontSize: "60px" }}>{countryName} News</h1>
+        <br />
+        <h4>{countryName} at this time</h4>
       </div>
       <div style={{ paddingLeft: "10%" }}>
         <News news={news} loading={loading} countryName={countryName} />

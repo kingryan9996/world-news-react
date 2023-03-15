@@ -17,11 +17,11 @@
   justify-content: center;
   width: 100px;
   height: 100vh;
-  border: 1px solid blue;
   background-color: #92ccea;
 }
 .abcd {
   position: fixed;
+  z-index: 50;
   top: 50%;
   left: 50%;
   display: flex;
@@ -33,6 +33,7 @@
 .WorldMap {
   /* width: 50%; */
   background-color: rgba(129, 198, 234, 0.8);
+  border-radius: 50%;
   /* width: 70%; */
   /* position: absolute; */
 }
@@ -68,10 +69,14 @@ svg {
   } */
 
 .weather-wrap {
-  border: 1px solid black;
   position: absolute;
-  top: 0;
-  right: 0;
+  z-index: -1;
+  top: 1%;
+  right: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .weather-data {
   display: flex;
@@ -79,9 +84,12 @@ svg {
 
 .weather-temp {
   display: flex;
-  /* width: 250px; */
-  /* height: 50px; */
-  border: 1px solid black;
+  align-items: center;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 255, 0.1);
+  box-shadow: 0 1px 2px;
+  padding: 10px;
+  margin: 0 3px;
 }
 
 .weather-cloudwind {
@@ -138,8 +146,9 @@ stroke-dasharray: 100%;
 }
 
 .newsItem {
-  padding: 5%;
+  padding: 3%;
   min-width: 300px;
+  max-width: 300px;
   border: 1px solid red;
   height: 300px;
   background-color: #fff;
@@ -151,6 +160,7 @@ stroke-dasharray: 100%;
   margin: 0 auto;
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

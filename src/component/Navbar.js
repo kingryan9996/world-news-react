@@ -7,9 +7,10 @@ import { faEarthAmericas } from "@fortawesome/free-solid-svg-icons";
 import WorldMap from "./WorldMap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
-  const {} = useContext(MyC);
+  const { } = useContext(MyC);
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   if (show) {
@@ -19,27 +20,25 @@ const Navbar = () => {
 
   return (
     <div className="Navbar">
-      <div>
-        <div
-          onClick={() => {
-            setShow(false);
-          }}
-          style={{
-            width: "100vw",
-            height: "100vh",
-            zIndex: 100000,
-            background: "rgba(0,0,0,0.6)",
-            display: show ? "flex" : "none",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "fixed",
-            top: "0%",
-            left: "0%",
-            //transform: "translate(-50%,-30%)",
-          }}
-        >
-          <WorldMap setShow={setShow} />
-        </div>
+      <div
+        onClick={() => {
+          setShow(false);
+        }}
+        style={{
+          width: "100vw",
+          height: "100vh",
+          zIndex: 100000,
+          background: "rgba(0,0,0,0.6)",
+          display: show ? "flex" : "none",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "fixed",
+          top: "0%",
+          left: "0%",
+
+        }}
+      >
+        <WorldMap show={show} setShow={setShow} />
       </div>
       <FontAwesomeIcon
         style={{ fontSize: "1.5rem" }}

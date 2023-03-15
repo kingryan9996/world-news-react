@@ -2,13 +2,14 @@ import React from 'react'
 import '../App.css'
 import { motion } from "framer-motion"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
+import { faLocationArrow, faTemperatureArrowUp, faTemperatureArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { faSnowflake, faUmbrella, faCloudSun, faWind } from "@fortawesome/free-solid-svg-icons";
 import Spinner from 'react-bootstrap/Spinner';
 
 const Weather = ({ weather, loading }) => {
     // console.log('웨더페이지10번째줄', loading)
     // console.log('웨더페이지 날씨데이터 ', weather)
+    console.log(Number(weather.main?.temp) < 0)
 
     if (!weather) {
         return <Spinner animation="border" variant="primary" />
@@ -31,21 +32,26 @@ const Weather = ({ weather, loading }) => {
             }}
             className="weather-wrap">
             {console.log(weather)}
-            <h2>{weather.name}</h2>
+            <div><h2>{weather.name}</h2></div>
             <div className="weather-data">
                 <div className='weather-temp'>
-                    <img src='wwfw' />
-                    <div>현재온도 : {weather.main?.temp}</div>
+                    {Number(weather.main?.temp) > 0 ?
+                        <FontAwesomeIcon icon={faTemperatureArrowUp} /> :
+                        <FontAwesomeIcon icon={faTemperatureArrowDown} />
+
+                    }&nbsp;
+                    <div>{weather.main?.temp}</div>
                 </div>
                 <div className='weather-temp'>
-                    <img src='wwfw' />
                     {/* <div>{weather.weather[0]?.description}, '구름 등등 자세히'</div> */}
                     <FontAwesomeIcon icon={weather.snow ? faSnowflake : weather?.rain ? faUmbrella : faCloudSun} />
-                    <span>{weather.snow || weather.rain ? ['1h'] : '2'}</span>
+                    {/* <span>{weather.snow || weather.rain ? ['1h'] + weather.rain["1h"] : '2'}</span> */}
                 </div>
                 <div className='weather-temp'>
-                    <div><FontAwesomeIcon className='wind-icon' icon={faWind} />
-                        '풍속', {weather.wind?.speed}<FontAwesomeIcon icon={faLocationArrow} size="2x" color="#000" transform={{ rotate: (Number(weather?.wind?.deg) - 45) }} /></div>
+                    <div>
+                        <FontAwesomeIcon icon={faLocationArrow} size="1x" color="#000" transform={{ rotate: (Number(weather?.wind?.deg) - 45) }} />&nbsp;{weather.wind?.speed}
+                        &nbsp;<FontAwesomeIcon className='wind-icon' icon={faWind} />
+                    </div>
                     {/* <div>'풍속', {weather.wind.speed}<FontAwesomeIcon icon={faLocationArrow} size="2x" color="#000" transform={{ rotate: -45 }} /></div> */}
                 </div>
             </div>
