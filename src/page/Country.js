@@ -67,7 +67,7 @@ const Country = () => {
         <br />
         <h4>{countryName} at this time</h4>
       </div>
-      <div style={{ paddingLeft: "10%" }}>
+      <div style={{ paddingLeft: "5.5%" }}>
         <News news={news} loading={loading} countryName={countryName} />
       </div>
     </div>

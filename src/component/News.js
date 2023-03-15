@@ -89,7 +89,7 @@ const News = ({ news, loading, countryName }) => {
     return <Spinner animation="border" variant="primary" />;
   }
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", alignContent: "center", padding: "3%" }}>
+    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignContent: "center", paddingTop: "3%" }}>
       {dragState &&
         dragState.map((item, idx) => (
           <NewsItem item={item} idx={idx} />
