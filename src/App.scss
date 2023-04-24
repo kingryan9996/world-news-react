@@ -272,12 +272,10 @@ stroke-dasharray: 100%;
     }
   }
   .WorldMap {
-    --p: 65;
-    width: calc(var(--p) * 1vw);
-    height: calc(var(--p) * 0.85vw);
-  }
-  .homeD {
-    margin-left: max(11vw, 50px);
+    --p: 60;
+    width: calc(var(--p) * 1%);
+    height: max (100px, calc(var(--p) * 1vw));
+    // transform: translateX(-150%);
   }
   .newsItem {
     max-width: 120px;
