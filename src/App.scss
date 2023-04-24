@@ -1,8 +1,13 @@
+@import "src/styles/mixin.scss";
+
 * {
   list-style-type: none;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
 .App {
   width: 100%;
@@ -19,7 +24,7 @@
   height: 100vh;
   background-color: #92ccea;
 }
-.abcd {
+.homeD {
   position: fixed;
   z-index: 50;
   top: 50%;
@@ -36,6 +41,10 @@
   border-radius: 50%;
   /* width: 70%; */
   /* position: absolute; */
+  --p: 19;
+  width: calc(var(--p) * 1vw);
+  height: calc(var(--p) * 0.85vw);
+  transform: "translateX(5%)";
 }
 
 .WorldMap path {
@@ -86,7 +95,7 @@ svg {
   display: flex;
   align-items: center;
   border-radius: 12px;
-  background-color: rgba(255, 255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 1px 2px;
   padding: 10px;
   margin: 0 3px;
@@ -136,6 +145,12 @@ stroke-dasharray: 0%;
 stroke-dasharray: 100%;
     }
   } */
+.countryName {
+  height: 250px;
+  h1 {
+    font-size: 60px;
+  }
+}
 
 .col {
   padding: 1%;
@@ -147,13 +162,20 @@ stroke-dasharray: 100%;
 
 .newsItem {
   padding: 3%;
-  min-width: 300px;
-  max-width: 300px;
+  // min-width: 300px;
+  // max-width: 300px;
   border: 1px solid red;
+  width: 300px;
   height: 300px;
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
+  h4 {
+    font-size: 1.5vw;
+  }
+  p {
+    font-size: 1vw;
+  }
 }
 
 .countryName {
@@ -179,4 +201,125 @@ stroke-dasharray: 100%;
 
 .modal-bg {
   background-color: inherit;
+}
+
+// 데스크탑 1800 ~
+@include desktop {
+  .homeD {
+    margin-left: max(1vw);
+  }
+}
+
+// 노트북에서 데스크탑 1500 ~ 1799
+@include desktopToLaptop {
+  .homeD {
+    margin-left: max(2vw);
+  }
+}
+
+// 1280 ~ 1499
+@include laptopLarge {
+  .homeD {
+    margin-left: max(3vw);
+  }
+}
+
+// 노트북 1024 ~ 1279
+@include laptop {
+  .homeD {
+    margin-left: max(5vw);
+  }
+}
+
+// 태블릿에서 노트북 960 ~ 1023
+@include laptopToTablet {
+  .homeD {
+    margin-left: max(6vw);
+  }
+}
+
+// 태블릿 720 ~ 959
+@include tablet {
+  .homeD {
+    margin-left: max(7vw);
+  }
+}
+
+// 모바일에서 태블릿 535 ~ 719
+@include tabletToMobile {
+  .homeD {
+    margin-left: max(9vw);
+  }
+}
+
+// 모바일 320 ~ 534
+@include mobile {
+  .Navbar {
+    width: 20px;
+    height: 20px;
+
+    background-color: transparent;
+    position: fixed;
+    top: 5px;
+    left: 0;
+    svg {
+      scale: 0.5;
+      transform: translateY(50%);
+    }
+    span {
+      scale: 0.4;
+      transform: translate(-30%, -50%);
+    }
+  }
+  .WorldMap {
+    --p: 65;
+    width: calc(var(--p) * 1vw);
+    height: calc(var(--p) * 0.85vw);
+  }
+  .homeD {
+    margin-left: max(11vw, 50px);
+  }
+  .newsItem {
+    max-width: 120px;
+    max-height: 120px;
+    h4 {
+      font-size: 0.85rem;
+    }
+    p {
+      margin-bottom: 0.2rem;
+    }
+    .moreLearn {
+      font-size: 1vw;
+      scale: 0.7;
+      white-space: nowrap;
+      justify-content: space-between;
+      transform: translateX(-15%);
+      // flex-direction: column;
+      // align-items: flex-end;
+      // width: 40%;
+      div {
+        margin-right: 10px;
+      }
+    }
+  }
+  .weather-wrap {
+    // transform: scale(0.6);
+    // color: red;
+    scale: 0.5;
+    // transform: ;
+    position: absolute;
+    right: -15%;
+    top: -0.7%;
+  }
+  .countryName {
+    height: 120px;
+    h1 {
+      font-size: 8vw;
+    }
+    h4 {
+      transform: translateY(-170%);
+      font-size: 4vw;
+      z-index: -1;
+    }
+  }
 }

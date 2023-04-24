@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "../App.css";
+import React, { useEffect, useState, useContext } from "react";
+import { MyC } from "../MyContext";
+import { useNavigate, useParams } from "react-router-dom";
+import "../App.scss";
 import "react-tooltip/dist/react-tooltip.css";
 import WorldMap from "../component/WorldMap";
 import { Container, Row, Col } from "react-bootstrap";
 
 const Home = () => {
+  const { setCurrentCountry } = useContext(MyC);
   // const [content, setContent] = useState("22")
   const geoUrl =
     "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
@@ -20,10 +22,6 @@ const Home = () => {
   // getUrl()
   const [content, setContent] = useState("Russia");
 
-  // useEffect(() => {
-  //     console.log(content)
-  // }, [content])
-
   const detailPage = (geo) => {
     console.log(geo);
     navigate(`/country/${geo.id}`);
@@ -31,12 +29,8 @@ const Home = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log("Home페이지 useEffect 알림");
-  }, []);
-
   return (
-    <div className="abcd">
+    <div className="homeD">
       <WorldMap style={{ scale: 0.1 }} />
     </div>
   );

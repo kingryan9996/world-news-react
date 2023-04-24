@@ -40,7 +40,7 @@ function getCountryPage(countryName, today) {
       // console.log('날씨', weather.data)
       // console.log('음악', music.data)
       // console.log('뉴스', news.data)
-      console.log("뉴욕타임즈뉴스", news.data.response.docs);
+      // console.log("뉴욕타임즈뉴스", news.data.response.docs);
 
       // console.log(today, '컨츄리액션')
 

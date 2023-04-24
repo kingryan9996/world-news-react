@@ -1,21 +1,20 @@
 import React, { useContext, useState } from "react";
 import { MyC } from "../MyContext";
 import { Link } from "react-router-dom";
-import "../App.css";
+import "../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEarthAmericas } from "@fortawesome/free-solid-svg-icons";
 import WorldMap from "./WorldMap";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import { motion } from "framer-motion";
 
 const Navbar = () => {
-  const { } = useContext(MyC);
-  const [show, setShow] = useState(false);
+  const { show, setShow, currentCountry } = useContext(MyC);
+
+  // const [show, setShow] = useState(false);
+  // console.log(show);
   const handleShow = () => setShow(true);
   if (show) {
     //window.addEventListener("mouseover", setShow(false));
-    console.log("showwhow");
+    // console.log("showwhow");
   }
 
   return (
@@ -35,7 +34,6 @@ const Navbar = () => {
           position: "fixed",
           top: "0%",
           left: "0%",
-
         }}
       >
         <WorldMap show={show} setShow={setShow} />
@@ -44,7 +42,9 @@ const Navbar = () => {
         style={{ fontSize: "1.5rem" }}
         icon={faEarthAmericas}
         onClick={() => {
-          setShow(true);
+          if (currentCountry != undefined) {
+            setShow(true);
+          }
         }}
       />
       <span style={{ textAlign: "center", fontSize: "0.7rem" }}>MORE</span>

@@ -3,7 +3,7 @@ import Navbar from "./component/Navbar";
 import { Routes, Route, useLocation } from "react-router-dom";
 import List from "./page/Country";
 import Home from "./page/Home";
-import "./App.css";
+import "./App.scss";
 import Country from "./page/Country";
 import { AnimatePresence } from "framer-motion";
 import axios from "axios";

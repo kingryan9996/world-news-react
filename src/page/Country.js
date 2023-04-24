@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { MyC } from "../MyContext";
 import countryData from "../Countrydata";
-import "../App.css";
+import "../App.scss";
 import { Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import News from "../component/News";
@@ -14,7 +14,9 @@ import Spinner from "react-bootstrap/Spinner";
 
 const Country = () => {
   // console.log(countryData, '나라갯수')
-  const { } = useContext(MyC);
+  const { currentCountry, setCurrentCountry } = useContext(MyC);
+  // console.log(currentCountry, setCurrentCountry);
+
   const dispatch = useDispatch();
   const { loading, weather, music, news } = useSelector(
     (state) => state.country
@@ -22,6 +24,9 @@ const Country = () => {
   // console.log('컨츄리페이지 20번째줄', loading)
 
   let { id } = useParams();
+  // console.log(id);
+  // console.log(currentCountry);
+
   const deleteData = countryData.filter((obj) => obj["alpha-3"] == id);
   // console.log(deleteData, '새로운데이터')
   let countryName = deleteData[0].name;
@@ -46,28 +51,34 @@ const Country = () => {
   useEffect(() => {
     // if (loading)
     dispatch(countryAction.getCountryPage(countryName, todayDate));
-    console.log("useEffect 카운터");
+    setCurrentCountry(id);
+    // console.log("useEffect 카운터");
   }, []);
 
   if (loading) {
-    {
-      console.log(loading, "loading상태");
-    }
-    return <Spinner animation="border" variant="primary" />;
+    // {console.log(loading, "loading상태");}
+    return (
+      <Spinner
+        style={{
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+        }}
+        animation="border"
+        variant="primary"
+      />
+    );
   }
   return (
     <div className="2">
-      {console.log(loading, "로딩상태")}
+      {/* {console.log(loading, "로딩상태")} */}
       <Weather weather={weather} loading={loading} />
-      <div
-        className="countryName"
-        style={{ height: 250, paddingTop: "100px" }}
-      >
-        <h1 style={{ fontWeight: "bold", fontSize: "60px" }}>{countryName} News</h1>
+      <div className="countryName" style={{ paddingTop: "100px" }}>
+        <h1 style={{ fontWeight: "bold" }}>{countryName} News</h1>
         <br />
         <h4>{countryName} at this time</h4>
       </div>
-      <div style={{ paddingLeft: "5.5%" }}>
+      <div className="lastCh" style={{ paddingLeft: "5.5%" }}>
         <News news={news} loading={loading} countryName={countryName} />
       </div>
     </div>

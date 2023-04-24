@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ComposableMap,
@@ -11,14 +11,16 @@ import {
 } from "react-simple-maps";
 import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import "react-tooltip/dist/react-tooltip.css";
+import { MyC } from "../MyContext";
 
-const WorldMap = ({ show, setShow }) => {
+const WorldMap = () => {
+  const { show, setShow } = useContext(MyC);
+  // console.log(setShow);
   const geoUrl =
     "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
   const navigate = useNavigate();
+
   const [content, setContent] = useState("");
-  const { params } = useParams();
-  console.log(params);
 
   const detailPage = (geo) => {
     // console.log(geo)
@@ -42,17 +44,9 @@ const WorldMap = ({ show, setShow }) => {
         transition: { duration: 0.5 },
       }}
       className="WorldMap"
-      style={
-        setShow
-          ? { width: "75vw", height: "85vh", transform: "translateX(5%)" }
-          : { width: "25vw", height: "30vh", transform: "translateX(5%)" }
-      }
+      style={show ? { scale: "3" } : { scale: "1" }}
     >
-      <ComposableMap
-        data-tip=""
-        data-for="tooltip"
-        className="navigate-push"
-      >
+      <ComposableMap data-tip="" data-for="tooltip" className="navigate-push">
         <ZoomableGroup zoom={1}>
           {/* {""} */}
           <Geographies geography={geoUrl}>
@@ -101,7 +95,7 @@ const WorldMap = ({ show, setShow }) => {
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
-    </motion.svg >
+    </motion.svg>
   );
 };
 
