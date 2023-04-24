@@ -31,7 +31,7 @@ const Weather = ({ weather, loading }) => {
         transition: { duration: 0.5 },
       }}
       animate={{
-        opacity: 0.9,
+        opacity: 1,
         transition: { duration: 0.5 },
       }}
       exit={{

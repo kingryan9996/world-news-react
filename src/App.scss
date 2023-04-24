@@ -243,12 +243,30 @@ stroke-dasharray: 100%;
   .homeD {
     margin-left: max(7vw);
   }
+  .countryName {
+    height: 250px;
+    h1 {
+      scale: 0.8;
+    }
+    h4 {
+      scale: 0.9;
+    }
+  }
 }
 
 // 모바일에서 태블릿 535 ~ 719
 @include tabletToMobile {
   .homeD {
     margin-left: max(9vw);
+  }
+  .countryName {
+    height: 290px;
+    h1 {
+      scale: 0.6;
+    }
+    h4 {
+      scale: 0.7;
+    }
   }
 }
 
@@ -307,7 +325,7 @@ stroke-dasharray: 100%;
     scale: 0.5;
     // transform: ;
     position: absolute;
-    right: -15%;
+    right: -11%;
     top: -0.7%;
   }
   .countryName {
